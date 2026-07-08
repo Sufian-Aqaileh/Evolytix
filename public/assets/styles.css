@@ -1,0 +1,596 @@
+:root {
+  font-family: Georgia, "Times New Roman", serif;
+  color: #e8eefc;
+  background:
+    radial-gradient(circle at top left, rgba(66, 124, 255, 0.22), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(34, 83, 196, 0.18), transparent 28%),
+    linear-gradient(180deg, #081120 0%, #0d1a31 45%, #06101d 100%);
+  line-height: 1.5;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.9), transparent);
+  pointer-events: none;
+}
+
+.app-frame {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 1.25rem 0 4rem;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 0 2rem;
+}
+
+.brand-lockup {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.brand-mark,
+.brand-subtitle,
+.eyebrow,
+.section-label,
+.pill-label,
+.number-badge,
+.small-label,
+.nav-link,
+.header-button,
+.mode-chip {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.brand-mark {
+  color: #88b4ff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.brand-subtitle {
+  margin-top: 0.25rem;
+  color: #a9bbdf;
+  font-size: 0.95rem;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.nav-link {
+  padding: 0.72rem 1rem;
+  border: 1px solid rgba(138, 174, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+  font-size: 0.95rem;
+  transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+}
+
+.nav-link:hover,
+.nav-link-active {
+  transform: translateY(-2px);
+  border-color: rgba(126, 170, 255, 0.42);
+  background: rgba(93, 139, 236, 0.14);
+}
+
+.page-shell {
+  display: grid;
+  gap: 1.75rem;
+}
+
+.hero-panel-large,
+.content-section,
+.info-card,
+.login-card,
+.mode-banner {
+  border: 1px solid rgba(129, 155, 214, 0.14);
+  background: rgba(8, 18, 37, 0.72);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(14px);
+}
+
+.hero-panel-large,
+.content-section {
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  border-radius: 32px;
+}
+
+.hero-panel-large {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.85fr);
+  gap: 1.5rem;
+}
+
+.hero-copy h1,
+.section-heading h2,
+.page-title {
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.hero-copy h1 {
+  max-width: 11ch;
+  font-size: clamp(3rem, 8vw, 6.2rem);
+  line-height: 0.95;
+}
+
+.eyebrow,
+.section-label {
+  margin: 0 0 1rem;
+  color: #8fb8ff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.intro-text,
+.section-heading p,
+.info-card p,
+.login-card span,
+.loading-state p,
+.mode-copy {
+  color: #bfd0ee;
+}
+
+.intro-text {
+  max-width: 54ch;
+  margin: 1.5rem 0 0;
+  font-size: 1.1rem;
+}
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 2rem;
+}
+
+.primary-link,
+.secondary-link,
+.action-button,
+.header-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0.8rem 1.2rem;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 0.95rem;
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.primary-link,
+.action-button {
+  background: linear-gradient(135deg, #6ba0ff 0%, #3a6fd8 100%);
+  color: #05101d;
+  font-weight: 700;
+}
+
+.secondary-link,
+.header-button {
+  border: 1px solid rgba(134, 165, 228, 0.2);
+  background: rgba(255, 255, 255, 0.03);
+  color: #e8eefc;
+}
+
+.primary-link:hover,
+.secondary-link:hover,
+.action-button:hover,
+.header-button:hover {
+  transform: translateY(-2px);
+}
+
+.summary-stack,
+.feature-grid,
+.split-grid,
+.timeline-grid,
+.stack-list,
+.results-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.summary-stack {
+  grid-template-columns: 1fr;
+}
+
+.feature-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 1.75rem;
+}
+
+.split-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 1.75rem;
+}
+
+.timeline-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 1.75rem;
+}
+
+.stack-list {
+  margin-top: 1.75rem;
+}
+
+.results-grid {
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  margin-top: 1.25rem;
+}
+
+.info-card,
+.login-card {
+  padding: 1.4rem;
+  border-radius: 24px;
+}
+
+.compact-card {
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.info-card h3,
+.login-card h3,
+.list-card h3 {
+  margin: 0 0 0.7rem;
+  font-size: 1.35rem;
+}
+
+.info-card p,
+.list-card p {
+  margin: 0;
+  font-size: 0.98rem;
+}
+
+.small-label,
+.pill-label,
+.number-badge,
+.mode-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.9rem;
+  border-radius: 999px;
+  color: #05101d;
+  background: #86b0ff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.small-label,
+.pill-label,
+.mode-chip {
+  padding: 0.38rem 0.7rem;
+}
+
+.number-badge {
+  min-width: 2.2rem;
+  min-height: 2.2rem;
+}
+
+.mode-chip-adaptive {
+  background: #7fb5ff;
+}
+
+.page-title,
+.section-heading h2 {
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1;
+}
+
+.intro-section {
+  display: grid;
+  gap: 1.75rem;
+}
+
+.mode-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.4rem;
+  border-radius: 24px;
+}
+
+.mode-copy {
+  margin: 0;
+}
+
+.login-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+  gap: 1.5rem;
+}
+
+.login-card {
+  display: grid;
+  gap: 1rem;
+  align-content: start;
+}
+
+.field-block {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.field-block input {
+  width: 100%;
+  padding: 0.95rem 1rem;
+  border: 1px solid rgba(144, 169, 223, 0.18);
+  border-radius: 16px;
+  color: #e8eefc;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.field-block input::placeholder {
+  color: #8d9fbe;
+}
+
+.list-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.list-card .number-badge {
+  margin-bottom: 0;
+}
+
+.loading-state {
+  text-align: center;
+}
+
+.service-card {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.service-card-active {
+  border-color: rgba(134, 176, 255, 0.38);
+}
+
+.audit-workspace {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.75rem;
+}
+
+.workflow-step {
+  display: grid;
+  gap: 1rem;
+  padding: 1.25rem;
+  border: 1px solid rgba(129, 155, 214, 0.14);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.workflow-step > .number-badge {
+  margin-bottom: 0;
+}
+
+.compact-heading h2 {
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+}
+
+.upload-panel {
+  display: flex;
+  align-items: end;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.file-drop {
+  display: grid;
+  gap: 0.45rem;
+  flex: 1 1 320px;
+  color: #bfd0ee;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.file-drop input {
+  width: 100%;
+  padding: 0.9rem;
+  border: 1px solid rgba(144, 169, 223, 0.18);
+  border-radius: 16px;
+  color: #e8eefc;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.status-line {
+  min-height: 1.5rem;
+  margin: 0;
+  color: #bfd0ee;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.status-line[data-tone="success"] {
+  color: #9ce6bd;
+}
+
+.status-line[data-tone="error"] {
+  color: #ffb2b2;
+}
+
+.metric-card {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.metric-card strong {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  line-height: 1;
+}
+
+.result-table-wrap {
+  margin-top: 0.5rem;
+}
+
+.result-table-wrap h3 {
+  margin: 0 0 0.75rem;
+}
+
+.table-scroller {
+  overflow-x: auto;
+  border: 1px solid rgba(129, 155, 214, 0.14);
+  border-radius: 18px;
+}
+
+.result-table {
+  width: 100%;
+  min-width: 680px;
+  border-collapse: collapse;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.result-table th,
+.result-table td {
+  padding: 0.8rem;
+  border-bottom: 1px solid rgba(129, 155, 214, 0.14);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.result-table th {
+  color: #8fb8ff;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.result-table td {
+  color: #dce7fa;
+  font-size: 0.9rem;
+}
+
+.artifact-links {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.plot-panel {
+  margin: 1rem 0 0;
+  overflow: hidden;
+  border: 1px solid rgba(129, 155, 214, 0.14);
+  border-radius: 18px;
+  background: #f8fbff;
+}
+
+.plot-panel img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+@media (max-width: 1024px) {
+  .hero-panel-large,
+  .login-layout,
+  .feature-grid,
+  .split-grid,
+  .timeline-grid,
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .site-header,
+  .header-actions,
+  .mode-banner {
+    display: grid;
+  }
+
+  .hero-copy h1 {
+    max-width: 12ch;
+  }
+}
+
+@media (max-width: 640px) {
+  .app-frame {
+    width: min(100% - 1rem, 1180px);
+  }
+
+  .hero-panel-large,
+  .content-section {
+    padding: 1.25rem;
+    border-radius: 24px;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(2.5rem, 16vw, 4rem);
+  }
+
+  .intro-text {
+    font-size: 1rem;
+  }
+}

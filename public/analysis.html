@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Evolytix Analysis</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+    <script src="assets/script.js" defer></script>
+  </head>
+  <body>
+    <div class="app-frame">
+      <header class="site-header">
+        <a class="brand-lockup" href="index.html">
+          <span class="brand-mark">Evolytix</span>
+          <span class="brand-subtitle">AI accounting intelligence</span>
+        </a>
+
+        <div class="header-actions">
+          <nav class="site-nav" aria-label="Primary navigation">
+            <a class="nav-link" href="index.html">Home</a>
+            <a class="nav-link" href="features.html">Features</a>
+            <a class="nav-link" href="analysis.html">Analysis</a>
+            <a class="nav-link" href="dashboard.html" data-auth-nav hidden>Dashboard</a>
+            <a class="nav-link" href="history.html" data-auth-nav hidden>History</a>
+            <a class="nav-link" href="settings.html" data-auth-nav hidden>Settings</a>
+            <a class="nav-link" href="login.html" data-login-nav>Login</a>
+          </nav>
+
+          <button class="header-button" type="button" data-logout-button hidden>Log out</button>
+        </div>
+      </header>
+
+      <main class="page-shell">
+        <section class="content-section intro-section">
+          <div class="section-heading">
+            <p class="section-label">Analysis workspace</p>
+            <h1 class="page-title">Choose the type of analysis manually.</h1>
+            <p>
+              You can use this page without logging in. Guest users work in static mode, while
+              logged-in companies automatically activate adaptive mode.
+            </p>
+          </div>
+
+          <article class="mode-banner">
+            <div>
+              <span class="mode-chip" data-mode-chip>Static Mode Active</span>
+              <p class="mode-copy" data-mode-copy>
+                You are using the public experience. Log in anytime to unlock dashboard, history,
+                and settings.
+              </p>
+            </div>
+            <a class="secondary-link" href="login.html" data-mode-login>Log in for adaptive mode</a>
+          </article>
+
+          <section class="audit-workspace" data-audit-workspace>
+            <article class="workflow-step">
+              <span class="number-badge">01</span>
+              <div class="section-heading compact-heading">
+                <p class="section-label">Input</p>
+                <h2>Upload the raw accounting file.</h2>
+                <p>
+                  The file is sent to the preparation layer first. Required source columns include
+                  Date, Account, Description, Debit, Credit, Category, and Transaction_Type.
+                </p>
+              </div>
+
+              <form class="upload-panel" data-preprocess-form>
+                <label class="file-drop">
+                  <span>CSV file</span>
+                  <input type="file" accept=".csv,text/csv" data-audit-file required />
+                </label>
+                <button class="action-button" type="submit">Preprocess File</button>
+              </form>
+            </article>
+
+            <article class="workflow-step" data-preprocess-output hidden>
+              <span class="number-badge">02</span>
+              <div class="section-heading compact-heading">
+                <p class="section-label">Preprocessed output</p>
+                <h2>Review the prepared files.</h2>
+                <p data-preprocess-summary>
+                  The cleaned CSV, data-quality report, and parquet model input are ready.
+                </p>
+              </div>
+
+              <div class="artifact-links">
+                <a class="secondary-link" data-cleaned-csv-link target="_blank" rel="noreferrer">Open cleaned CSV</a>
+                <a class="secondary-link" data-quality-report-link target="_blank" rel="noreferrer">Open quality report</a>
+              </div>
+            </article>
+
+            <article class="workflow-step" data-model-selection hidden>
+              <span class="number-badge">03</span>
+              <div class="section-heading compact-heading">
+                <p class="section-label">Model selection</p>
+                <h2 data-workspace-title>Choose the model.</h2>
+                <p data-workspace-copy>
+                  Select one model to run against the prepared parquet file.
+                </p>
+              </div>
+
+              <div class="feature-grid">
+                <article class="info-card service-card service-card-active" data-service-card="auditing">
+                  <h3>Auditing</h3>
+                  <p>Run anomaly checks, compare records, and guide audit reviews.</p>
+                  <button class="action-button" type="button" data-service-choice="auditing">Select Auditing</button>
+                </article>
+                <article class="info-card service-card" data-service-card="forecasting">
+                  <h3>Financial Analysis</h3>
+                  <p>Forecast financial impact from tax or expense transaction patterns.</p>
+                  <button class="action-button" type="button" data-service-choice="forecasting">Select Forecasting</button>
+                </article>
+                <article class="info-card service-card" data-service-card="advisory">
+                  <h3>Tax Consultation</h3>
+                  <p>Generate optimization guidance from forecasted financial impact.</p>
+                  <button class="action-button" type="button" data-service-choice="advisory">Select Advisory</button>
+                </article>
+              </div>
+
+              <button class="action-button" type="button" data-run-model-button>Run Selected Model</button>
+            </article>
+
+            <article class="workflow-step" data-model-output hidden>
+              <span class="number-badge">04</span>
+              <div class="section-heading compact-heading">
+                <p class="section-label" data-workspace-label>Model output</p>
+                <h2>Review the result.</h2>
+              </div>
+
+              <div class="results-grid" data-audit-results hidden></div>
+
+              <div class="result-table-wrap" data-flagged-wrap hidden>
+                <h3 data-result-table-title>First flagged rows</h3>
+                <div class="table-scroller">
+                  <table class="result-table">
+                    <thead data-flagged-head></thead>
+                    <tbody data-flagged-body></tbody>
+                  </table>
+                </div>
+              </div>
+
+              <figure class="plot-panel" data-plot-panel hidden>
+                <img data-result-plot alt="Analysis result charts" />
+              </figure>
+            </article>
+
+            <p class="status-line" data-audit-status></p>
+          </section>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
+
+

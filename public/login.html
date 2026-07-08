@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Evolytix Login</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+    <script src="assets/script.js" defer></script>
+  </head>
+  <body>
+    <div class="app-frame">
+      <header class="site-header">
+        <a class="brand-lockup" href="index.html">
+          <span class="brand-mark">Evolytix</span>
+          <span class="brand-subtitle">AI accounting intelligence</span>
+        </a>
+
+        <div class="header-actions">
+          <nav class="site-nav" aria-label="Primary navigation">
+            <a class="nav-link" href="index.html">Home</a>
+            <a class="nav-link" href="features.html">Features</a>
+            <a class="nav-link" href="analysis.html">Analysis</a>
+            <a class="nav-link" href="dashboard.html" data-auth-nav hidden>Dashboard</a>
+            <a class="nav-link" href="history.html" data-auth-nav hidden>History</a>
+            <a class="nav-link" href="settings.html" data-auth-nav hidden>Settings</a>
+            <a class="nav-link" href="login.html" data-login-nav>Login</a>
+          </nav>
+
+          <button class="header-button" type="button" data-logout-button hidden>Log out</button>
+        </div>
+      </header>
+
+      <main class="page-shell">
+        <section class="content-section login-layout">
+          <div class="section-heading">
+            <p class="section-label">Account access</p>
+            <h1 class="page-title">Log in to activate adaptive mode.</h1>
+            <p>
+              The web app is usable without login in static mode. Signing in unlocks adaptive
+              mode together with the Dashboard, History, and Settings pages.
+            </p>
+          </div>
+
+          <form class="login-card" data-login-form>
+            <label class="field-block">
+              <span>Company email</span>
+              <input type="email" placeholder="team@company.com" required />
+            </label>
+
+            <label class="field-block">
+              <span>Password</span>
+              <input type="password" placeholder="Enter your password" required />
+            </label>
+
+            <button class="action-button" type="submit">Activate adaptive mode</button>
+          </form>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
+
+
